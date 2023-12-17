@@ -19,6 +19,10 @@ abstract class NotesDataBase : RoomDatabase() {
             return instance ?: synchronized(this) { buildDataBase(context).also { instance = it } }
         }
 
+        fun getInstanceWithoutContext(): NotesDataBase {
+            return instance!!
+        }
+
         private fun buildDataBase(context: Context): NotesDataBase {
             return Room.databaseBuilder(context, NotesDataBase::class.java, DATA_BASE_NAME).build()
         }

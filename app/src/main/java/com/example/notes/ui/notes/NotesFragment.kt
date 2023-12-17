@@ -26,8 +26,7 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val database = NotesDataBase.getInstance(activity?.applicationContext!!).noteDao()
-        database.insertNote(NotesEntity(0, "heba ali", "2023/12/16", false))
+     
     }
 
 }
