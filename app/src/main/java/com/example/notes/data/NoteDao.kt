@@ -1,18 +1,20 @@
 package com.example.notes.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface NoteDao {
     @Insert
-    fun insertNote(note: NotesEntity)
+    suspend fun insertNote(note: NotesEntity)
 
     @Delete
-    fun deleteNote(note: NotesEntity)
+    suspend fun deleteNote(note: NotesEntity)
 
     @Update
-    fun updateNote(note: NotesEntity)
+    suspend fun updateNote(note: NotesEntity)
 
-    @Query("SELECT * FROM NOTE_TABLE")
-    fun getAllNotes(): List<NotesEntity>
+    @Query("SELECT * FROM NOTE_TABLE ORDER BY id DESC")
+    suspend fun getAllNotes(): List<NotesEntity>
+
 }
