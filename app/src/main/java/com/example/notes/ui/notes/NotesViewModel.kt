@@ -14,9 +14,10 @@ class NotesViewModel : ViewModel() {
     private val _notes = MutableLiveData<List<NotesEntity>>()
     var note: LiveData<List<NotesEntity>> = _notes
     private val repository = NoteRepository()
-init {
-    loadNotes()
-}
+
+    init {
+        loadNotes()
+    }
 
     fun addNotes() {
         viewModelScope.launch {
