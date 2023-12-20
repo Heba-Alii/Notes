@@ -2,6 +2,7 @@ package com.example.notes.repo
 
 import com.example.notes.data.NotesDataBase
 import com.example.notes.data.NotesEntity
+import kotlinx.coroutines.flow.Flow
 
 class NoteRepository {
     val dao = NotesDataBase.getInstanceWithoutContext().noteDao()
@@ -10,7 +11,7 @@ class NoteRepository {
         dao.insertNote(note)
     }
 
-    suspend fun getAllNotes(): List<NotesEntity> {
+    fun getAllNotes(): Flow<List<NotesEntity>> {
         return dao.getAllNotes()
     }
 }

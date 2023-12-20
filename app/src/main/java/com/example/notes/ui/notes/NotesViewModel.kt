@@ -1,9 +1,6 @@
 package com.example.notes.ui.notes
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.notes.data.NotesEntity
 import com.example.notes.repo.NoteRepository
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -11,13 +8,14 @@ import kotlinx.coroutines.launch
 
 class NotesViewModel : ViewModel() {
     val newNote = MutableLiveData<String>()
-    private val _notes = MutableLiveData<List<NotesEntity>>()
-    var note: LiveData<List<NotesEntity>> = _notes
     private val repository = NoteRepository()
+    private val _notes = MutableLiveData<List<NotesEntity>>()
+    //instead of fun loadNotes
+    var note: LiveData<List<NotesEntity>> = repository.getAllNotes().asLiveData()
 
-    init {
-        loadNotes()
-    }
+//    init {
+//        loadNotes()
+//    }
 
     fun addNotes() {
         viewModelScope.launch {
@@ -27,9 +25,12 @@ class NotesViewModel : ViewModel() {
         }
     }
 
-    private fun loadNotes() {
-        viewModelScope.launch {
-            _notes.postValue(repository.getAllNotes())
-        }
-    }
+//    private fun loadNotes() {
+//        viewModelScope.launch {
+//            repository.getAllNotes().collect() {
+//
+//                _notes.postValue(it)
+//            }
+//        }
+//    }
 }
