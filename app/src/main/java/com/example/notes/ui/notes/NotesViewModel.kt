@@ -5,6 +5,7 @@ import com.example.notes.data.NotesEntity
 import com.example.notes.repo.NoteRepository
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.launch
+import java.util.*
 
 class NotesViewModel : ViewModel() {
     val newNote = MutableLiveData<String>()
@@ -20,7 +21,7 @@ class NotesViewModel : ViewModel() {
     fun addNotes() {
         viewModelScope.launch {
             newNote.value?.let {
-                repository.insertNewNote(NotesEntity(0, it, "jdh", false))
+                repository.insertNewNote(NotesEntity(0, it, Date(), false))
             }
         }
     }
