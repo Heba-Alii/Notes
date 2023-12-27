@@ -14,10 +14,6 @@ class NotesViewModel : ViewModel() {
     //instead of fun loadNotes
     var note: LiveData<List<NotesEntity>> = repository.getAllNotes().asLiveData()
 
-//    init {
-//        loadNotes()
-//    }
-
     fun addNotes() {
         viewModelScope.launch {
             newNote.value?.let {
