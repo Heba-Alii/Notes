@@ -14,4 +14,7 @@ class NoteRepository {
     fun getAllNotes(): Flow<List<NotesEntity>> {
         return dao.getAllNotes()
     }
+
+    //% to filter all search content the letter user will enter
+    suspend fun getFilteredNotes(searchItems: String) = dao.filterNotes("%$searchItems%")
 }

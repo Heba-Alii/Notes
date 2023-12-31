@@ -35,5 +35,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/text_note"
             app:layout_constraintTop_toBottomOf="@+id/text_note" />
+
+        <EditText
+            android:id="@+id/filter_ET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Filter Notes"
+            android:text="@={viewModel.searchText}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_note_btn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
