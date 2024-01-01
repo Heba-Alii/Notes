@@ -13,5 +13,7 @@ data class NotesEntity(
     @ColumnInfo(name = "content")
     val content: String,
     val date: Date,
-    val isImportant: Boolean
+    val isImportant: Boolean,
+    val reminderTime: Int,
+    val reminderDate: Int
 )
