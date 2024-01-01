@@ -25,6 +25,7 @@ abstract class NotesDataBase : RoomDatabase() {
             return instance!!
         }
 
+        //Migration in room to add new version
         private fun buildDataBase(context: Context): NotesDataBase {
             return Room.databaseBuilder(context, NotesDataBase::class.java, DATA_BASE_NAME)
                 .fallbackToDestructiveMigration().build()
