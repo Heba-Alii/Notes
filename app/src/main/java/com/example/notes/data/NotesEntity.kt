@@ -12,8 +12,8 @@ data class NotesEntity(
     //To change name of column
     @ColumnInfo(name = "content")
     val content: String,
-    val date: Date,
+    val dateTime: Date,
     val isImportant: Boolean,
     val reminderTime: Int,
-    val reminderDate: Int
+    val reminderDate: Int?
 )

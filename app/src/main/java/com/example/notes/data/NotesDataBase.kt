@@ -1,14 +1,17 @@
 package com.example.notes.data
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import androidx.room.*
+import androidx.room.migration.AutoMigrationSpec
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [NotesEntity::class], version = 2)
+@Database(
+    entities = [NotesEntity::class],
+    version = 2,
+    //exportSchema = true,
+    autoMigrations = [AutoMigration(from = 1, 2, spec = NotesDataBase.Migration_1_2spec::class)]
+)
 @TypeConverters(Converter::class)
 abstract class NotesDataBase : RoomDatabase() {
     abstract fun noteDao(): NoteDao
@@ -43,4 +46,11 @@ abstract class NotesDataBase : RoomDatabase() {
 
         }
     }
+
+    @RenameColumn(
+        tableName = "NOTE_TABLE",
+        fromColumnName = "date",
+        toColumnName = "dateTime"
+    )
+    class Migration_1_2spec : AutoMigrationSpec
 }
