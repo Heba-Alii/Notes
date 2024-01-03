@@ -17,7 +17,8 @@ interface NoteDao {
 
     @Query("SELECT * FROM NOTE_TABLE ORDER BY id DESC")
     fun getAllNotes(): Flow<List<NotesEntity>>
-//We use like instead of == to filter any string if user enter false word
+
+    //We use like instead of == to filter any string if user enter false word
     @Query("SELECT * FROM NOTE_TABLE WHERE content LIKE :searchItems ORDER BY id DESC")
     suspend fun filterNotes(searchItems: String): List<NotesEntity>
 
