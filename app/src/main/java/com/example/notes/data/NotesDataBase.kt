@@ -47,6 +47,7 @@ abstract class NotesDataBase : RoomDatabase() {
         }
     }
 
+    // Auto Migration
     @RenameColumn(
         tableName = "NOTE_TABLE",
         fromColumnName = "date",

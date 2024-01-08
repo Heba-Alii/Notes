@@ -28,5 +28,4 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
-
 }
